@@ -4,9 +4,30 @@
 # export GROOVY_JAR="../lib/groovy-all-2.0.6.jar"
 
 
+GROOVY=$(<"$1")
+
+# using $GROOVY as text content, 
+# because groovy src="" did not work on win and unix paths
+
+build_file="$1.$$.$RANDOM.tmp" 
+cat <<< "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<project name=\"project\" default=\"default\">
+    <taskdef name=\"groovy\" 
+    	 classname=\"org.codehaus.groovy.ant.Groovy\"
+         classpath=\"../lib/groovy-all-2.0.6.jar\" />     
+    <target name=\"default\">
+        <groovy>$GROOVY</groovy>
+    </target>
+</project>
+" > "$build_file"
+
+
 
 "$ECLIPSE_BIN" \
 	-nosplash \
 	-data . \
 	-application org.eclipse.ant.core.antRunner \
-	-buildfile "$1"
+	-buildfile "$build_file"
+
+rm "$build_file"
+
