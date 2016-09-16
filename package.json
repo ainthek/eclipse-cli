@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "eclipse-cli": "./bin/eclipse-cli",
+    "eclipse-cli-new-project": "./bin/eclipse-cli-new-project"
+  },
   "author": "",
   "license": "ISC"
 }
