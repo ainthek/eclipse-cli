@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export PROJECT_NAME="$1"
+${0%/*}/eclipse-cli "${0%/*}/../src/new-project.xml"

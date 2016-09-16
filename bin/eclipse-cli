@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# relative to src/file.xml
+# export GROOVY_JAR="../lib/groovy-all-2.0.6.jar"
+
+
+
+"$ECLIPSE_BIN" \
+	-nosplash \
+	-data . \
+	-application org.eclipse.ant.core.antRunner \
+	-buildfile "$1"
